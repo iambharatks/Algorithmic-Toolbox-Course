@@ -21,12 +21,18 @@ int partition3(vector<int> &A)
   {
     for (int j = 1; j <= n; j++)
     {
-      if (i >= A[j])
-        dp[i][j] = dp[i][j - 1] || dp[i - A[j]][j - 1];
+      if (i >= A[j - 1])
+        dp[i][j] = dp[i][j - 1] || dp[i - A[j - 1]][j - 1];
       else
         dp[i][j] = dp[i][j - 1];
     }
   }
+  // for (int i = 1; i <= sum / 3; i++)
+  // {
+  //   for (int j = 1; j <= n; j++)
+  //     if (dp[i][j])
+  //       std::cout << i << " " << j << "\n";
+  // }
   return dp[sum / 3][n];
 }
 
